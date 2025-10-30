@@ -67,3 +67,14 @@ describe('Yams game tests', () => {
     expect(() => computeGameScore(rolls)).toThrow();
   })
 })
+
+describe('BONUS: Yams advanced tests', () => {
+  it('should return 70 for 1 Full / 1 Brelan / 1 Chance', () => {
+    const rolls = [
+      [2,2,2,3,3], 
+      [2,2,2,3,3], 
+      [2,2,2,3,3], 
+    ];
+    expect(computeGameScore(rolls)).toBe(70);
+  })
+})
