@@ -10,7 +10,7 @@ const isSuite = (dices) => {
   return true;
 }
 
-export const computeYamsSuite = (dices) => {
+export const computeYamsScore = (dices) => {
   if(dices.length !== 5) {
     throw new Error('Invalid number of dices');
   }
@@ -43,7 +43,7 @@ export const computeGameScore = (dicesThrows) => {
   let totalScore = 0;
   try {
     dicesThrows.forEach((diceThrow) => {
-        totalScore += computeYamsSuite(diceThrow);
+        totalScore += computeYamsScore(diceThrow);
     });
   } catch (e) {
     throw new Error('Invalid dice throw');
