@@ -51,33 +51,27 @@ export const computeYamsSuite = (dices, alreadyUsedFigures = new Set()) => {
   const counts = Object.values(dicesValues);
 
   if(counts.includes(5) && !alreadyUsedFigures.has(Figure.YAMS)) {
-    console.log('Using YAMS');
     alreadyUsedFigures.add(Figure.YAMS);
     return figures[Figure.YAMS];
   }
   if(counts.includes(2) && counts.includes(3) && !alreadyUsedFigures.has(Figure.FULL)) {  
-    console.log('Using FULL', alreadyUsedFigures);
     alreadyUsedFigures.add(Figure.FULL);
     return figures[Figure.FULL];
   }
   if(counts.includes(4) && !alreadyUsedFigures.has(Figure.CARRE)) {
-    console.log('Using CARRE');
     alreadyUsedFigures.add(Figure.CARRE);
     return figures[Figure.CARRE];
   }
   if(counts.includes(3) && !alreadyUsedFigures.has(Figure.BRELAN)) {
-    console.log('Using BRELAN');
     alreadyUsedFigures.add(Figure.BRELAN);
     return figures[Figure.BRELAN];
   }
   if(isSuite(dices) && !alreadyUsedFigures.has(Figure.SUITE)) {
-    console.log('Using SUITE');
     alreadyUsedFigures.add(Figure.SUITE);
     return figures[Figure.SUITE];
   }
 
   if(!alreadyUsedFigures.has(Figure.CHANCE)) {
-    console.log('Using CHANCE');
     alreadyUsedFigures.add(Figure.CHANCE);
     return dices.reduce((a,b) => a + b, 0);
   }

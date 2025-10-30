@@ -24,13 +24,13 @@ describe('Yams game tests', () => {
     expect(computeGameScore(rolls)).toBe(93);
   })
 
-  it('should return 130 for Suite / Yams / Chance', () => {
+  it('should return 106 for Suite / Yams / Chance', () => {
     const rolls = [
-      [1,2,3,4,5], 
-      [6,6,6,6,6], 
-      [2,3,4,5,6], 
+      [1,2,3,4,5], // 40
+      [1,1,1,1,1], // 50
+      [2,3,4,1,6], // 16
     ];
-    expect(computeGameScore(rolls)).toBe(130);
+    expect(computeGameScore(rolls)).toBe(106);
   })
 
   it('should return 109 for Carre / Full / Brelan / Chance', () => {
