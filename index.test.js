@@ -8,7 +8,7 @@ describe('Yams basic suite tests', () => {
     [[1,1,1,2,2], 30],
     [[1,2,3,4,5], 40],
     [[5,5,5,5,5], 50],
-    [[3,2,1,4,6], 18],
+    [[3,2,1,4,6], 16],
   ])("should return %s given %s", (input, expected) => {
     expect(computeYamsSuite(input)).toBe(expected);
   })

@@ -1,10 +1,8 @@
 const isSuite = (dices) => {
-  const sortedDices = dices.sort();
-  const suite1 = [1,2,3,4,5];
-  const suite2 = [2,3,4,5,6];
+  const sortedDices = [...dices].sort((a, b) => a - b);
 
-  for (let i = 0; i < sortedDices.length; i++) {
-    if (sortedDices[i] !== suite1[i] && sortedDices[i] !== suite2[i]) {
+  for (let i = 1; i < sortedDices.length; i++) {
+    if (sortedDices[i] !== sortedDices[i - 1] + 1) {
       return false;
     }
   }
@@ -31,5 +29,6 @@ export const computeYamsSuite = (dices) => {
   if(counts.includes(3)) return 28;
   if(isSuite(dices)) return 40;
   
+  return dices.reduce((a,b) => a + b, 0);
   
 }
