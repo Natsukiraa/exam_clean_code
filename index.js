@@ -25,9 +25,11 @@ export const computeYamsSuite = (dices) => {
 
   const counts = Object.values(dicesValues);
 
+  if(counts.includes(5)) return 50;
   if(counts.includes(2) && counts.includes(3)) return 30;
   if(counts.includes(4)) return 35;
   if(counts.includes(3)) return 28;
   if(isSuite(dices)) return 40;
+  
   
 }
