@@ -1,3 +1,21 @@
+export const FIGURE = {
+  YAMS: 'yams',
+  FULL: 'full',
+  CARRE: 'carre',
+  BRELAN: 'brelan',
+  SUITE: 'suite',
+  CHANCE: 'chance',
+};
+
+const FIGURES = {
+  [FIGURE.YAMS]: 50,
+  [FIGURE.FULL]: 30,
+  [FIGURE.CARRE]: 35,
+  [FIGURE.BRELAN]: 28,
+  [FIGURE.SUITE]: 40,
+  [FIGURE.CHANCE]: null,
+};
+
 const isSuite = (dices) => {
   const sortedDices = [...dices].sort((a, b) => a - b);
 
@@ -29,12 +47,12 @@ export const computeYamsScore = (dices) => {
 
   const counts = Object.values(dicesValues);
 
-  if(counts.includes(5)) return 50;
-  if(counts.includes(2) && counts.includes(3)) return 30;
-  if(counts.includes(4)) return 35;
-  if(counts.includes(3)) return 28;
-  if(isSuite(dices)) return 40;
-  
+  if(counts.includes(5)) return FIGURES[FIGURE.YAMS];
+  if(counts.includes(2) && counts.includes(3)) return FIGURES[FIGURE.FULL];
+  if(counts.includes(4)) return FIGURES[FIGURE.CARRE];
+  if(counts.includes(3)) return FIGURES[FIGURE.BRELAN];
+  if(isSuite(dices)) return FIGURES[FIGURE.SUITE];
+
   return dices.reduce((a,b) => a + b, 0);
   
 }
