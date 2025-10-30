@@ -23,4 +23,22 @@ describe('Yams game tests', () => {
     ];
     expect(computeGameScore(rolls)).toBe(93);
   })
+
+  it('should throw error if dices are not valid', () => {
+    const rolls = [
+      [2,2,2,3,4], 
+      [5,5,5,5,1,6], 
+      [1,1,1,2,2], 
+    ];
+    expect(() => computeGameScore(rolls)).toThrow();
+  })
+
+  it('should throw error if dices are not valid', () => {
+    const rolls = [
+      [2,2,"b",3,4], 
+      [5,5,5,5,1,"a"], 
+      [1,2,9], 
+    ];
+    expect(() => computeGameScore(rolls)).toThrow();
+  })
 })
