@@ -24,6 +24,31 @@ describe('Yams game tests', () => {
     expect(computeGameScore(rolls)).toBe(93);
   })
 
+  it('should return 130 for Suite / Yams / Chance', () => {
+    const rolls = [
+      [1,2,3,4,5], 
+      [6,6,6,6,6], 
+      [2,3,4,5,6], 
+    ];
+    expect(computeGameScore(rolls)).toBe(130);
+  })
+
+  it('should return 109 for Carre / Full / Brelan / Chance', () => {
+    const rolls = [
+      [4,4,4,4,2], 
+      [3,3,3,5,5], 
+      [6,6,6,1,2],
+      [2,2,3,4,5],
+    ];
+    expect(computeGameScore(rolls)).toBe(109);
+  })
+
+
+  it('should return 0 for empty rolls', () => {
+    const rolls = [];
+    expect(computeGameScore(rolls)).toBe(0);
+  })
+
   it('should throw error if dices are not valid', () => {
     const rolls = [
       [2,2,2,3,4], 
