@@ -1,4 +1,4 @@
-export const Figure = {
+export const FIGURE = {
   YAMS: 'yams',
   FULL: 'full',
   CARRE: 'carre',
@@ -7,13 +7,13 @@ export const Figure = {
   CHANCE: 'chance',
 };
 
-const figures = {
-  [Figure.YAMS]: 50,
-  [Figure.FULL]: 30,
-  [Figure.CARRE]: 35,
-  [Figure.BRELAN]: 28,
-  [Figure.SUITE]: 40,
-  [Figure.CHANCE]: null,
+const FIGURES = {
+  [FIGURE.YAMS]: 50,
+  [FIGURE.FULL]: 30,
+  [FIGURE.CARRE]: 35,
+  [FIGURE.BRELAN]: 28,
+  [FIGURE.SUITE]: 40,
+  [FIGURE.CHANCE]: null,
 };
 
 
@@ -30,7 +30,7 @@ const isSuite = (dices) => {
   return true;
 }
 
-export const computeYamsSuite = (dices, alreadyUsedFigures = new Set()) => {
+export const computeYamsScore = (dices, usedFigures = new Set()) => {
   if(dices.length !== 5) {
     throw new Error('Invalid number of dices');
   }
@@ -50,29 +50,29 @@ export const computeYamsSuite = (dices, alreadyUsedFigures = new Set()) => {
 
   const counts = Object.values(dicesValues);
 
-  if(counts.includes(5) && !alreadyUsedFigures.has(Figure.YAMS)) {
-    alreadyUsedFigures.add(Figure.YAMS);
-    return figures[Figure.YAMS];
+  if(counts.includes(5) && !usedFigures.has(FIGURE.YAMS)) {
+    usedFigures.add(FIGURE.YAMS);
+    return FIGURES[FIGURE.YAMS];
   }
-  if(counts.includes(2) && counts.includes(3) && !alreadyUsedFigures.has(Figure.FULL)) {  
-    alreadyUsedFigures.add(Figure.FULL);
-    return figures[Figure.FULL];
+  if(counts.includes(2) && counts.includes(3) && !usedFigures.has(FIGURE.FULL)) {  
+    usedFigures.add(FIGURE.FULL);
+    return FIGURES[FIGURE.FULL];
   }
-  if(counts.includes(4) && !alreadyUsedFigures.has(Figure.CARRE)) {
-    alreadyUsedFigures.add(Figure.CARRE);
-    return figures[Figure.CARRE];
+  if(counts.includes(4) && !usedFigures.has(FIGURE.CARRE)) {
+    usedFigures.add(FIGURE.CARRE);
+    return FIGURES[FIGURE.CARRE];
   }
-  if(counts.includes(3) && !alreadyUsedFigures.has(Figure.BRELAN)) {
-    alreadyUsedFigures.add(Figure.BRELAN);
-    return figures[Figure.BRELAN];
+  if(counts.includes(3) && !usedFigures.has(FIGURE.BRELAN)) {
+    usedFigures.add(FIGURE.BRELAN);
+    return FIGURES[FIGURE.BRELAN];
   }
-  if(isSuite(dices) && !alreadyUsedFigures.has(Figure.SUITE)) {
-    alreadyUsedFigures.add(Figure.SUITE);
-    return figures[Figure.SUITE];
+  if(isSuite(dices) && !usedFigures.has(FIGURE.SUITE)) {
+    usedFigures.add(FIGURE.SUITE);
+    return FIGURES[FIGURE.SUITE];
   }
 
-  if(!alreadyUsedFigures.has(Figure.CHANCE)) {
-    alreadyUsedFigures.add(Figure.CHANCE);
+  if(!usedFigures.has(FIGURE.CHANCE)) {
+    usedFigures.add(FIGURE.CHANCE);
     return dices.reduce((a,b) => a + b, 0);
   }
 
@@ -82,10 +82,10 @@ export const computeYamsSuite = (dices, alreadyUsedFigures = new Set()) => {
 
 export const computeGameScore = (dicesThrows) => {
   let totalScore = 0;
-  let alreadyUsedFigures = new Set();
+  let usedFigures = new Set();
   try {
     dicesThrows.forEach((diceThrow) => {
-        totalScore += computeYamsSuite(diceThrow, alreadyUsedFigures);
+        totalScore += computeYamsScore(diceThrow, usedFigures);
     });
   } catch (e) {
     throw new Error('Invalid dice throw');

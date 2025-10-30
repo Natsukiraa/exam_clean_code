@@ -1,5 +1,5 @@
 import { describe,it,expect } from "vitest"
-import { computeYamsSuite, computeGameScore } from "."
+import { computeYamsScore, computeGameScore } from "."
 
 describe('Yams basic suite tests', () => {
   it.each([
@@ -10,7 +10,7 @@ describe('Yams basic suite tests', () => {
     [[5,5,5,5,5], 50], // YAMS
     [[3,2,1,4,6], 16], // CHANCE
   ])("should return %s given %s", (input, expected) => {
-    expect(computeYamsSuite(input)).toBe(expected);
+    expect(computeYamsScore(input)).toBe(expected);
   })
 })
 
