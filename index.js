@@ -1,21 +1,18 @@
 export const computeYamsSuite = (dices) => {
-  let identicalCount = 0;
+  let dicesValues = {};
 
-  for (let i = 0; i < dices.length; i++) {
-    let count = 0;
-    for (let j = 0; j < dices.length; j++) {
-      if (dices[i] === dices[j]) {
-        count++;
-      }
+  dices.forEach((dice) => {
+    if (dicesValues[dice]) {
+      dicesValues[dice] += 1;
+    } else {
+      dicesValues[dice] = 1;
     }
-    if (count > identicalCount) {
-      identicalCount = count;
-    }
-  }
+  })
 
-  if(identicalCount == 3) {
-    return 28;
-  } else if (identicalCount == 4) {
-    return 35;
-  }
+  const counts = Object.values(dicesValues);
+
+  if(counts.includes(2) && counts.includes(3)) return 30;
+  if(counts.includes(4)) return 35;
+  if(counts.includes(3)) return 28;
+  
 }
