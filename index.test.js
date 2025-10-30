@@ -1,5 +1,5 @@
 import { describe,it,expect } from "vitest"
-
+import { computeYamsSuite } from "."
 
 describe('Yams basic suite tests', () => {
   it.each([
@@ -10,6 +10,6 @@ describe('Yams basic suite tests', () => {
     [[5,5,5,5,5], 50],
     [[3,2,1,4,6], 18],
   ])("should return %s given %s", (input, expected) => {
-    expect(print(input)).toBe(expected);
+    expect(computeYamsSuite(input)).toBe(expected);
   })
 })
