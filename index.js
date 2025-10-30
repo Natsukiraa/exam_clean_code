@@ -15,5 +15,7 @@ export const computeYamsSuite = (dices) => {
 
   if(identicalCount == 3) {
     return 28;
+  } else if (identicalCount == 4) {
+    return 35;
   }
 }
