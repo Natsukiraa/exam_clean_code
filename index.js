@@ -32,3 +32,12 @@ export const computeYamsSuite = (dices) => {
   return dices.reduce((a,b) => a + b, 0);
   
 }
+
+export const computeGameScore = (dicesThrows) => {
+  let totalScore = 0;
+  dicesThrows.forEach((diceThrow) => {
+    totalScore += computeYamsSuite(diceThrow);
+  })
+
+  return totalScore
+}
